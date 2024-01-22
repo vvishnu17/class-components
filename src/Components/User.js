@@ -8,4 +8,11 @@ class User extends Component{
         </li>
     }
 }
+
+/*const User = (props) =>{
+    return <li className={styles.user}>
+        {props.name}
+    </li>
+
+}*/
 export default User;
