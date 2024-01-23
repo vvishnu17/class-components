@@ -1,10 +1,9 @@
 import React from "react";
-import Users from "./Components/Users";
+import UserFinder from "./Components/UserFinder";
 
 const App = () =>{
     return <React.Fragment>
-        <Users />
-
+        <UserFinder />
     </React.Fragment>
 }
 

@@ -2,17 +2,11 @@ import React, {Component} from "react";
 import styles from './Users.module.css';
 import User from "./User";
 
-const DUMMY_USERS = [
-    {id:'m1', name:'Max'},
-    {id:'m2', name:'Manuel'},
-    {id:'m3', name:'Jullie'},
-]
-
 class Users extends Component{
     constructor(){
         super();
         this.state = {
-            showUsers: false,
+            showUsers: true,
         }
     }
     toggleShowUsersHandler(){
@@ -24,7 +18,7 @@ class Users extends Component{
     }
 
     render(){
-        const userList = DUMMY_USERS.map((user) => <User key={user.id} name={user.name}/>)
+        const userList = this.props.users.map((user) => <User key={user.id} name={user.name}/>)
         return <div className={styles.users}>
         <button  onClick={this.toggleShowUsersHandler.bind(this)} className={styles.button}>{this.state.showUsers ? 'Hide': 'Show'} Users</button>
         <ul className={styles.userList}>
