@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Component } from "react";
 import styles from './UserFinder.module.css';
 import Users from "./Users";
 
@@ -8,8 +8,43 @@ const DUMMY_USERS = [
     {id:'m3', name:'jullie'},
 ]
 
-const UserFinder = () => {
-    const [searchTerm,setSearchTerm] = useState('');
+class UserFinder extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            searchTerm: '',
+            filteredUsers: DUMMY_USERS,
+        }
+    }
+    componentDidUpdate(prevProps,prevState){
+        if(prevState.searchTerm !== this.state.searchTerm)
+        {
+            this.setState({filteredUsers: DUMMY_USERS.filter((user)=>user.name.includes(this.state.searchTerm))})
+        }
+    }
+
+    onSearchHandler(event){
+        this.setState({searchTerm: event.target.value})
+    }
+
+
+    render(){
+        return <React.Fragment>
+        <div className={styles.finder}>
+            <input type="search" onChange={this.onSearchHandler.bind(this)}/>
+        </div>
+        <Users users={this.state.filteredUsers}/>
+    </React.Fragment>
+
+    }
+
+}
+
+
+
+/*const UserFinder = () => {
+    const [searchTerm,setSearchTerm] = useState(DUMMY_USERS);
     const [filteredUsers,setFilteredUsers] = useState([]);
 
     useEffect(()=>{
@@ -26,6 +61,6 @@ const UserFinder = () => {
         </div>
         <Users users={filteredUsers}/>
     </React.Fragment>
-}
+}*/
 
 export default UserFinder;
