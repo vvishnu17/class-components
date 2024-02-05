@@ -9,6 +9,7 @@ class Users extends Component{
             showUsers: true,
         }
     }
+
     toggleShowUsersHandler(){
         this.setState((prevState) => {
             return {
@@ -18,6 +19,9 @@ class Users extends Component{
     }
 
     render(){
+        if(this.props.users.length === 0){
+            throw new Error("No Users Found");
+        }
         const userList = this.props.users.map((user) => <User key={user.id} name={user.name}/>)
         return <div className={styles.users}>
         <button  onClick={this.toggleShowUsersHandler.bind(this)} className={styles.button}>{this.state.showUsers ? 'Hide': 'Show'} Users</button>

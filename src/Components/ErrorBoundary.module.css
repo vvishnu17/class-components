@@ -1,0 +1,11 @@
+.error{
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
+.button{
+    color: white;
+    background-color: red;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
