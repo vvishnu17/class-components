@@ -14,8 +14,11 @@ class UserFinder extends Component {
         super();
         this.state = {
             searchTerm: '',
-            filteredUsers: DUMMY_USERS,
+            filteredUsers: [],
         }
+    }
+    componentDidMount(){
+        this.setState({filteredUsers:DUMMY_USERS})
     }
     componentDidUpdate(prevProps,prevState){
         if(prevState.searchTerm !== this.state.searchTerm)
